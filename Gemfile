@@ -31,10 +31,17 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # warnings form Github
 gem "rack", ">= 2.2.3"
 
+gem 'devise'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+        gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+     end
+  gem 'rails-controller-testing'      # rspec 4 requirement
+
 end
 
 group :development do
