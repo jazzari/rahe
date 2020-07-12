@@ -1,11 +1,14 @@
 require 'rails_helper'
 
-describe 'navigate to root' do 
-	
+RSpec.describe HomeController, type: :controller do
 
-	it "should route to index" do 
-		visit root_path
-    	expect(page.status_code).to eq(200)
-	end
+	describe 'navigate to root' do 
+		subject { get :index }
 
-end 
+		it "should route to index" do 
+			expect(subject).to render_template('index')
+		end
+
+	end 
+
+end
