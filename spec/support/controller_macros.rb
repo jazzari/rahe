@@ -1,3 +1,5 @@
+require 'factory_bot'
+
 FactoryBot.define do
   module ControllerMacros
   def login_user

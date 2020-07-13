@@ -5,6 +5,8 @@ RSpec.describe LapsController, tyoe: :controller do
 	#	{ time: 1001, setting: false, hardware: false, notes: "some notes" }
 	#}
 
+	login_user
+
 	let(:valid_session) { {} }
 
 	describe "GET #index" do 
