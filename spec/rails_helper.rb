@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'devise'
 require 'capybara/rspec'
+require 'support/controller_helpers'
 require_relative 'support/controller_macros'
 
 
@@ -69,5 +70,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include FactoryBot::Syntax::Methods
+  #config.include ControllerHelpers, :type => :controller
+  config.include Warden::Test::Helpers
   config.extend ControllerMacros, :type => :controller
 end

@@ -17,4 +17,6 @@ RSpec.describe LapsController, tyoe: :controller do
 		end
 	end
 
+	
+
 end
