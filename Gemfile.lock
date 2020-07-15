@@ -122,6 +122,10 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    database_cleaner (1.8.5)
+    database_cleaner-active_record (1.8.0)
+      activerecord
+      database_cleaner (~> 1.8.0)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -271,6 +275,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  database_cleaner-active_record (~> 1.8)
   devise
   factory_bot_rails
   jbuilder (~> 2.7)

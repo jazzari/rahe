@@ -5,7 +5,7 @@ FactoryBot.define do
     #sequence(:login) { |n| "testuser#{n}" }
     name { "Test User" }
     
-    email {"test@user.com"}
+    sequence(:email) { |n| "test#{n}@user.com"}
     password {"qwerty"}
     password_confirmation {"qwerty"}
     # Add additional fields as required via your User model

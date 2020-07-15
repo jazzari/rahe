@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'devise'
 require 'capybara/rspec'
 require 'support/controller_helpers'
-require_relative 'support/controller_macros'
+require 'database_cleaner/active_record'
 
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -73,4 +73,19 @@ RSpec.configure do |config|
   #config.include ControllerHelpers, :type => :controller
   config.include Warden::Test::Helpers
   config.extend ControllerMacros, :type => :controller
+
+  # required for database_cleaner
+  config.before(:suite) do
+    # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.around(:each) do |example|
+    # start the transaction strategy as examples are run
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
 end
