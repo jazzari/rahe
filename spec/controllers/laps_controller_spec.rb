@@ -34,15 +34,44 @@ RSpec.describe LapsController, tyoe: :controller do
 
 	end
 
+	describe 'GET #new' do 
+		subject { get :new}
+
+		it "should exist lap" do 
+			subject
+			expect(response).to be_successful
+		end
+
+	end
+
 	describe 'POST #create' do 
 	  
-		it "should create a new lap" do 
+		it "should create a new lap and save it to the DB" do 
 			post :create, :params => { :lap => { id: 1, time: 1005, 
 				setting: "false", hardware: false } }
 
 			expect(Lap.count).to eq(1)
 			expect(Lap.first[:time]).to eq(1005)
 		end
+	end
+
+	describe 'PATCH #update' do 
+	  
+		it "should modife an existing lap and save it to the DB" do 
+			patch :update, :params => { id: lap.id, :lap => { time: 1005, 
+				setting: "true", hardware: false } }
+
+			expect(Lap.count).to eq(1)
+			expect(Lap.first[:setting]).to eq(true)
+		end
+	end
+
+	describe 'DELETE #destroy' do 
+
+		it "should destroy the actual lap" do 
+			delete :destroy, params: { id: lap.id }
+		end
+
 	end
 
 end
