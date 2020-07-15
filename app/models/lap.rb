@@ -5,4 +5,6 @@ class Lap < ApplicationRecord
 	validates :setting, inclusion: { in: [ true, false ] }
 	validates :hardware, inclusion: { in: [ true, false ] }
 	validates :notes, length: {minimum: 5, maximum: 280}, allow_blank: true
+
+	belongs_to :user
 end

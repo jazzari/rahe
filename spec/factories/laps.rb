@@ -4,5 +4,6 @@ FactoryBot.define do
 		setting { "false" }
 		hardware { "false" }
 	    sequence(:notes) { |n| "This is note number: #{n}" }
+	    association :user
 	end
 end

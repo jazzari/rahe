@@ -3,10 +3,18 @@ require 'rails_helper'
 RSpec.describe Lap, type: :model do
 
   describe '#validations' do 
+    let(:user) do
+        create :user
+    end
 
   	it "should test that the factory is valid" do 
   		expect(build :lap).to be_valid
   	end
+
+    it "can't be created without a user" do 
+      lap = build :lap, user_id: ''
+      expect(lap).not_to be_valid
+    end
 
   	it "should validate that time is greater than 999 miliseconds" do 
   		lap = build :lap, time: 800
@@ -38,5 +46,6 @@ RSpec.describe Lap, type: :model do
   	end
 
   end
+
 
 end

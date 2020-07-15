@@ -4,9 +4,10 @@ FactoryBot.define do
   factory :user do
     #sequence(:login) { |n| "testuser#{n}" }
     name { "Test User" }
-    id {1}
+    
     email {"test@user.com"}
     password {"qwerty"}
+    password_confirmation {"qwerty"}
     # Add additional fields as required via your User model
   end
 
