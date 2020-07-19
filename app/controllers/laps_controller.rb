@@ -1,6 +1,7 @@
 class LapsController < ApplicationController
 		before_action :set_lap, only: [:edit, :show, :update, :destroy]
 		before_action :authenticate_user!, except: [:index, :show]
+		#before_action :time_params, only: [:create]
 
 	def index
 		@laps = Lap.all 
@@ -19,6 +20,11 @@ class LapsController < ApplicationController
 			flash[:notice] = "TimeLap was successfully created"
 			redirect_to laps_path
 		else
+			puts @lap.time
+			puts @lap.setting
+			puts @lap.hardware
+			puts @lap.notes
+			puts @lap.user_id
 			render :new
 		end
 	end
@@ -52,6 +58,7 @@ class LapsController < ApplicationController
 	  end
 
 	def lap_params
-		params.require(:lap).permit(:id, :time, :setting, :hardware)
+		params.require(:lap).permit(:id, :t_minutes, :setting, :hardware, :notes, :time)
 	end
+
 end

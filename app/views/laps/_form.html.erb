@@ -1,0 +1,22 @@
+
+<%= form_for @lap do |f| %>
+	<p>
+		<%= f.label :minutes %>
+		<%= f.number_field :t_minutes, in: 0..59 %>
+	</p>
+	<p>
+	    <b>Settings</b><br />
+	    <%= f.radio_button :setting, 'Default', checked: true %> Default<br />
+	    <%= f.radio_button :setting, 'Custom' %> Custom<br />
+	</p>
+	<p>
+	    <b>Hardware</b><br />
+	    <%= f.radio_button :hardware, 'Default', checked: true %> Default<br />
+	    <%= f.radio_button :hardware, 'Custom' %> Custom<br />
+	</p>
+	<p>
+		<%= f.label :notes %>
+		<%= f.text_area :notes, placeholder: "Enter your notes..." %>
+	</p>
+	<%= f.submit %>
+<% end %>

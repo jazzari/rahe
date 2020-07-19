@@ -7,4 +7,15 @@ class Lap < ApplicationRecord
 	validates :notes, length: {minimum: 5, maximum: 280}, allow_blank: true
 
 	belongs_to :user
+
+	def t_minutes
+		@t_minutes
+	end
+
+	def t_minutes=(value)
+		self.time = value.to_i * 60000
+		#@lap.time = @t_minutes
+	end
+
+
 end
