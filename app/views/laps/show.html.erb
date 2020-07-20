@@ -1,3 +1,7 @@
 <%= render 'shared/page_title', title: "showing timeLap" %>
 
-<% @lap %>
+	<%= @lap.time %>
+	<span>Settings: <%= @lap.setting %></span>
+	<span>Hardware: <%= @lap.hardware %></span>
+	<span>Notes: <%= @lap.notes %></span>
+	<p></p>

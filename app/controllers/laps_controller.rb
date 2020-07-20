@@ -10,7 +10,8 @@ class LapsController < ApplicationController
 	def show
 	end
 
-	def edit 
+	def new
+		@lap = current_user.laps.build
 	end
 
 	def create
@@ -18,7 +19,7 @@ class LapsController < ApplicationController
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"
-			redirect_to laps_path
+			redirect_to lap_path(@lap)
 		else
 			puts @lap.time
 			puts @lap.setting
@@ -29,8 +30,7 @@ class LapsController < ApplicationController
 		end
 	end
 
-	def new
-		@lap = current_user.laps.build
+	def edit 
 	end
 
 	def update
