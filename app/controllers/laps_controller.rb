@@ -58,7 +58,8 @@ class LapsController < ApplicationController
 	  end
 
 	def lap_params
-		params.require(:lap).permit(:id, :t_minutes, :setting, :hardware, :notes, :time)
+		params.require(:lap).permit(:id, :t_minutes, :t_seconds, :t_millis,
+		 :setting, :hardware, :notes, :time)
 	end
 
 end

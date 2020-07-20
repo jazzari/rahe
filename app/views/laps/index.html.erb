@@ -1,5 +1,8 @@
 <%= render 'shared/page_title', title: "timeLaps Index" %>
-
+<p>
+	<%= link_to 'Add New Timelap', new_lap_path %>
+</p>
+<br />
 
 <% @laps.each do |lap| %>
 	<%= lap.time %>

@@ -1,9 +1,19 @@
 
 <%= form_for @lap do |f| %>
-	<p>
+	<div class="row">
+	  <div class="column">
 		<%= f.label :minutes %>
 		<%= f.number_field :t_minutes, in: 0..59 %>
-	</p>
+	  </div>
+	  <div class="column">
+		<%= f.label :seconds %>
+		<%= f.number_field :t_seconds, in: 0..59 %>
+	  </div>
+	  <div class="column">
+		<%= f.label :milliseconds %>
+		<%= f.number_field :t_millis, in: 0..999 %>
+	  </div>
+	</div>	
 	<p>
 	    <b>Setting</b><br />
 	    <table>

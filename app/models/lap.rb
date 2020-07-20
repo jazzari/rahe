@@ -16,5 +16,20 @@ class Lap < ApplicationRecord
 		self.time = value.to_i * 60000
 	end
 
+	def t_seconds
+		@t_seconds
+	end
+
+	def t_seconds=(value)
+		self.time += value.to_i * 1000
+	end
+
+	def t_millis
+		@t_millis
+	end
+
+	def t_millis=(value)
+		self.time += value.to_i
+	end
 
 end
