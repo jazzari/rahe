@@ -1,10 +1,10 @@
 class LapsController < ApplicationController
 		before_action :set_lap, only: [:edit, :show, :update, :destroy]
 		before_action :authenticate_user!, except: [:index, :show]
-		#before_action :time_params, only: [:create]
+
 
 	def index
-		@laps = Lap.all 
+		@laps = Lap.all.order(created_at: :DESC)
 	end
 
 	def show

@@ -5,15 +5,30 @@
 		<%= f.number_field :t_minutes, in: 0..59 %>
 	</p>
 	<p>
-	    <b>Settings</b><br />
-	    <%= f.radio_button :setting, 'Default', checked: true %> Default<br />
-	    <%= f.radio_button :setting, 'Custom' %> Custom<br />
+	    <b>Setting</b><br />
+	    <table>
+	        <tr>
+	            <td><%= f.label 'Settings', 'Custom' %></td>
+	            <td><%= f.radio_button :setting, true %></td>
+	        </tr>
+
+	        <tr>
+	            <td><%= f.label 'Settings', 'Default' %></td>
+	            <td><%= f.radio_button :setting, false, checked: true %></td>
+	        </tr>
+	    </table>
 	</p>
-	<p>
-	    <b>Hardware</b><br />
-	    <%= f.radio_button :hardware, 'Default', checked: true %> Default<br />
-	    <%= f.radio_button :hardware, 'Custom' %> Custom<br />
-	</p>
+	    <table>
+	        <tr>
+	            <td><%= f.label 'Hardware', 'Custom' %></td>
+	            <td><%= f.radio_button :hardware, true %></td>
+	        </tr>
+
+	        <tr>
+	            <td><%= f.label 'Hardware', 'Default' %></td>
+	            <td><%= f.radio_button :hardware, false, checked: true %></td>
+	        </tr>
+	    </table>
 	<p>
 		<%= f.label :notes %>
 		<%= f.text_area :notes, placeholder: "Enter your notes..." %>

@@ -3,5 +3,8 @@
 
 <% @laps.each do |lap| %>
 	<%= lap.time %>
+	<span>Settings: <%= lap.setting %></span>
+	<span>Hardware: <%= lap.hardware %></span>
+	<span>Notes: <%= lap.notes %></span>
 	<p></p>
 <% end %>
