@@ -1,4 +1,4 @@
-<%= render 'shared/page_title', title: "timeLaps index" %>
+<%= render 'shared/page_title', title: "timeLaps Index" %>
 
 
 <% @laps.each do |lap| %>
@@ -6,5 +6,12 @@
 	<span>Settings: <%= lap.setting %></span>
 	<span>Hardware: <%= lap.hardware %></span>
 	<span>Notes: <%= lap.notes %></span>
+	<p>
+		<%= link_to 'Edit', edit_lap_path(lap) %>
+		<%= link_to 'Show', lap_path(lap) %>
+		<%= link_to 'Delete', lap_path(lap), method: :delete, 
+			data: { confirm: "Are you sure?" } %>
+	</p>
+	<br />
 	<p></p>
 <% end %>

@@ -5,3 +5,8 @@
 	<span>Hardware: <%= @lap.hardware %></span>
 	<span>Notes: <%= @lap.notes %></span>
 	<p></p>
+
+	<%= link_to 'Edit', edit_lap_path(@lap) %>
+	<%= link_to 'Back', laps_path %>
+	<%= link_to 'Delete', lap_path(@lap), method: :delete, 
+		data: { confirm: "Are you sure?" } %>
