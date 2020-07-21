@@ -1,0 +1,15 @@
+<% @laps.each do |lap| %>
+	<%= lap.time %>
+	<span>Settings: <%= lap.setting %></span>
+	<span>Hardware: <%= lap.hardware %></span>
+	<span>Notes: <%= lap.notes %></span>
+	<span>Time: <%= lap.formated_time(lap.time) %></span>
+	<p>
+		<%= link_to 'Edit', edit_lap_path(lap) %>
+		<%= link_to 'Show', lap_path(lap) %>
+		<%= link_to 'Delete', lap_path(lap), method: :delete, 
+			data: { confirm: "Are you sure?" } %>
+	</p>
+	<br />
+	<p></p>
+<% end %>
