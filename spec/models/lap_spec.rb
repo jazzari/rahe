@@ -16,10 +16,10 @@ RSpec.describe Lap, type: :model do
       expect(lap).not_to be_valid
     end
 
-  	it "should validate that time is greater than 999 miliseconds" do 
-  		lap = build :lap, time: 800
+  	it "should validate that time is greater than 1999 miliseconds" do 
+  		lap = build :lap, time: 1800
   		expect(lap).not_to be_valid
-  		expect(lap.errors.messages[:time]).to include("must be greater than 999")
+  		expect(lap.errors.messages[:time]).to include("must be greater than 1999")
   	end
 
   	it "should validate that time is less than 3600000 miliseconds" do 

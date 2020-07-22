@@ -1,11 +1,22 @@
 <%= render 'shared/page_title', title: "showing timeLap" %>
 
-	<%= @lap.time %>
-	<span>Settings: <%= @lap.setting %></span>
-	<span>Hardware: <%= @lap.hardware %></span>
+
+	<span>LapTime: <%= @lap.formated_time(@lap.time) %></span>
+	<% if @lap.setting == "true" %>
+		<span>Setting: default</span>
+	<% else %>
+		<span>Setting: custom</span>
+	<% end %>
+
+	<% if @lap.hardware == "true" %>
+		<span>Hardware: default</span>
+	<% else %>
+		<span>Hardware: custom</span>
+	<% end %>
+
 	<span>Notes: <%= @lap.notes %></span>
-	<span>Formated_Time: <%= @lap.formated_time(@lap.time) %></span>
-	<span><%= @time %></span>
+
+
 	<p></p>
 
 	<%= link_to 'Edit', edit_lap_path(@lap) %>
