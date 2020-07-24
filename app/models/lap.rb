@@ -9,6 +9,7 @@ class Lap < ApplicationRecord
 	belongs_to :user, dependent: :destroy
 	belongs_to :simulator, dependent: :destroy
 	belongs_to :track, dependent: :destroy
+	belongs_to :car, dependent: :destroy
 
 	# virtual attributes to parse user's input
 	def t_minutes

@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_110906) do
+ActiveRecord::Schema.define(version: 2020_07_24_155155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
+    t.string "name"
+    t.bigint "track_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["track_id"], name: "index_cars_on_track_id"
+  end
 
   create_table "laps", force: :cascade do |t|
     t.integer "time"
@@ -25,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_07_24_110906) do
     t.bigint "user_id", null: false
     t.bigint "simulator_id", null: false
     t.bigint "track_id", null: false
+    t.bigint "car_id", null: false
+    t.index ["car_id"], name: "index_laps_on_car_id"
     t.index ["simulator_id"], name: "index_laps_on_simulator_id"
     t.index ["track_id"], name: "index_laps_on_track_id"
     t.index ["user_id"], name: "index_laps_on_user_id"
@@ -59,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_07_24_110906) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "tracks"
+  add_foreign_key "laps", "cars"
   add_foreign_key "laps", "simulators"
   add_foreign_key "laps", "tracks"
   add_foreign_key "laps", "users"

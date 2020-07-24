@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :simulators, dependent: :destroy
-    has_many :tracks, :through => :simulators
-  has_many :laps, :through => :tracks
+  has_many :tracks, :through => :simulators
+  has_many :cars, :through => :tracks
+  has_many :laps, :through => :cars
 end
