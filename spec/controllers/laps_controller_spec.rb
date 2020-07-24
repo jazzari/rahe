@@ -4,8 +4,9 @@ RSpec.describe LapsController, tyoe: :controller do
 
 	login_user
 	let(:user) { create :user }
+	let(:simulator) { create :simulator }
 	let(:lap) { create :lap }
-	#let(:valid_session) { {} }
+
 
 	describe "GET #index" do 
 		subject { get :index }
@@ -47,18 +48,18 @@ RSpec.describe LapsController, tyoe: :controller do
 	describe 'POST #create' do 
 	  
 		it "should create a new lap and save it to the DB" do 
-			post :create, :params => { :lap => { id: 1, time: 1005, 
-				setting: "false", hardware: false } }
+			post :create, :params => { :lap => { id: 2, time: 2005, 
+				setting: "false", hardware: false, notes: "", simulator_id: 1 } }
 
 			expect(Lap.count).to eq(1)
-			expect(Lap.first[:time]).to eq(1005)
+			expect(Lap.first[:hardware]).to eq(false)
 		end
 	end
 
 	describe 'PATCH #update' do 
 	  
 		it "should modife an existing lap and save it to the DB" do 
-			patch :update, :params => { id: lap.id, :lap => { time: 1005, 
+			patch :update, :params => { id: lap.id, :lap => { time: 2005, 
 				setting: "true", hardware: false } }
 
 			expect(Lap.count).to eq(1)

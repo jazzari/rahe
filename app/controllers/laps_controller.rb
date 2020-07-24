@@ -20,8 +20,8 @@ class LapsController < ApplicationController
 		@lap = current_user.laps.build(lap_params)
 		@lap.user_id = current_user.id
 		@lap.simulator_id = params[:lap][:simulator_id]
-		puts @lap.simulator_id
-		puts @lap.time 
+		#puts @lap.simulator_id
+		#puts @lap.time 
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"

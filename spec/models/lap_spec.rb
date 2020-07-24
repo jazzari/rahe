@@ -6,6 +6,9 @@ RSpec.describe Lap, type: :model do
     let(:user) do
         create :user
     end
+        let(:simulator) do
+        create :simulator
+    end
 
   	it "should test that the factory is valid" do 
   		expect(build :lap).to be_valid
@@ -13,6 +16,11 @@ RSpec.describe Lap, type: :model do
 
     it "can't be created without a user" do 
       lap = build :lap, user_id: ''
+      expect(lap).not_to be_valid
+    end
+
+    it "can't be created without a simulator" do 
+      lap = build :lap, simulator_id: ''
       expect(lap).not_to be_valid
     end
 

@@ -1,9 +1,10 @@
 FactoryBot.define do 
 	factory :lap do 
-		sequence(:time, 1000) { |n| "#{n}" }
+		sequence(:time, 2000) { |n| "#{n}" }
 		setting { "false" }
 		hardware { "false" }
 	    sequence(:notes) { |n| "This is note number: #{n}" }
 	    association :user
+	    association :simulator
 	end
 end
