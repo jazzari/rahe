@@ -7,6 +7,9 @@
 	<p>
 		<%= f.collection_select(:track_id, Track.all, :id, :name) %> 
 	</p>
+	<p>
+		<%= f.collection_select(:car_id, Car.all, :id, :name) %> 
+	</p>
 	<div class="row">
 	  <div class="column">
 		<%= f.label :minutes %>

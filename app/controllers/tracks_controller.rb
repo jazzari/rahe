@@ -6,6 +6,6 @@ class TracksController < ApplicationController
 
 	def new
 		@track = Track.new
-		@track.laps.build
+		@track.cars.build
 	end
 end

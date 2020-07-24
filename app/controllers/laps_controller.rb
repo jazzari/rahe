@@ -13,14 +13,15 @@ class LapsController < ApplicationController
 	end
 
 	def new
-		@lap = current_user.simulators.build.tracks.build.laps.build
+		@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
 	end
 
 	def create
-		@lap = current_user.simulators.build.tracks.build.laps.build(lap_params)
+		@lap = current_user.simulators.build.tracks.build.cars.build.laps.build(lap_params)
 		@lap.user_id = current_user.id
 		@lap.simulator_id = params[:lap][:simulator_id]
 		@lap.track_id = params[:lap][:track_id]
+		@lap.car_id = params[:lap][:car_id]
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"
@@ -59,7 +60,7 @@ class LapsController < ApplicationController
 
 	def lap_params
 		params.require(:lap).permit(:id, :t_minutes, :t_seconds, :t_millis,
-		 :setting, :hardware, :notes, :time, :simulator_id, :track_id)
+		 :setting, :hardware, :notes, :time, :simulator_id, :track_id, :car_id)
 	end
 
 
