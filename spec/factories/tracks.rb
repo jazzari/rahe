@@ -1,6 +1,6 @@
 FactoryBot.define do 
 	factory :track do 
-		sequence(:name) { |n| "Track N #{n}" }
+		name { "Track1" }
 
 	    association :simulator
 	end

@@ -5,6 +5,7 @@ RSpec.describe LapsController, tyoe: :controller do
 	login_user
 	let(:user) { create :user }
 	let(:simulator) { create :simulator }
+	#let(:track) { create :track }
 	let(:lap) { create :lap }
 
 
@@ -48,8 +49,9 @@ RSpec.describe LapsController, tyoe: :controller do
 	describe 'POST #create' do 
 	  
 		it "should create a new lap and save it to the DB" do 
-			post :create, :params => { :lap => { id: 2, time: 2005, 
-				setting: "false", hardware: false, notes: "", simulator_id: 1 } }
+			post :create, :params => { :lap => { id: 100, time: 5005, 
+				setting: false, hardware: false, notes: "some notes", 
+				user_id: 1, simulator_id: 1, track_id: 1 } }
 
 			expect(Lap.count).to eq(1)
 			expect(Lap.first[:hardware]).to eq(false)

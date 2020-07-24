@@ -6,5 +6,6 @@ FactoryBot.define do
 	    sequence(:notes) { |n| "This is note number: #{n}" }
 	    association :user
 	    association :simulator
+	    association :track
 	end
 end
