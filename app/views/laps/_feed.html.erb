@@ -1,6 +1,7 @@
 
 <% @laps.each do |lap| %>
 	<span>Simulator: <%= lap.simulator.name %></span>
+	<span>Track: <%= lap.track.name %></span>
 	<span>LapTime: <%= lap.formated_time(lap.time) %></span>
 	<span>Settings: <%= lap.setting %></span>
 	<span>Hardware: <%= lap.hardware %></span>

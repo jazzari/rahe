@@ -6,6 +6,6 @@ class SimulatorsController < ApplicationController
 
 	def new
 		@simulators = Simulator.new
-		@simulators.laps.build
+		@simulators.tracks.build
 	end
 end
