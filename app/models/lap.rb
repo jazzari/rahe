@@ -7,6 +7,7 @@ class Lap < ApplicationRecord
 	validates :notes, length: {minimum: 5, maximum: 280}, allow_blank: true
 
 	belongs_to :user
+	belongs_to :simulator
 
 	# virtual attributes to parse user's input
 	def t_minutes

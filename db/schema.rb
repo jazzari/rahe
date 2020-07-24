@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_092558) do
+ActiveRecord::Schema.define(version: 2020_07_23_154741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_07_23_092558) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.bigint "track_id", null: false
-    t.index ["track_id"], name: "index_laps_on_track_id"
+    t.bigint "simulator_id", null: false
+    t.index ["simulator_id"], name: "index_laps_on_simulator_id"
     t.index ["user_id"], name: "index_laps_on_user_id"
   end
 
@@ -34,14 +34,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_092558) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_simulators_on_user_id"
-  end
-
-  create_table "tracks", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_tracks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,8 +49,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_092558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "laps", "tracks"
+  add_foreign_key "laps", "simulators"
   add_foreign_key "laps", "users"
   add_foreign_key "simulators", "users"
-  add_foreign_key "tracks", "users"
 end

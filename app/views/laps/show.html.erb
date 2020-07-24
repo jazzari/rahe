@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: "showing timeLap" %>
 
-
+	<span>Simulator: <%= @lap.simulator.name %></span>
 	<span>LapTime: <%= @lap.formated_time(@lap.time) %></span>
 	<% if @lap.setting == "true" %>
 		<span>Setting: default</span>

@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :laps
+  has_many :simulators, dependent: :destroy
+  has_many :laps, :through => :simulators
 end

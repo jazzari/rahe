@@ -1,6 +1,9 @@
 <%= render 'shared/errors', obj: @lap %>
 
 <%= form_for @lap do |f| %>
+	<p>
+		<%= f.collection_select(:simulator_id, Simulator.all, :id, :name) %> 
+	</p>
 	<div class="row">
 	  <div class="column">
 		<%= f.label :minutes %>
