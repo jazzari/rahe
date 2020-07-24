@@ -7,5 +7,6 @@ FactoryBot.define do
 	    association :user
 	    association :simulator
 	    association :track
+	    association :car
 	end
 end
