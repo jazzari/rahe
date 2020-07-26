@@ -15,7 +15,7 @@ class LapsController < ApplicationController
 	end
 
 	def new
-		
+		@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
 	end
 
 	def create
