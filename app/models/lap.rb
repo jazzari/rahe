@@ -6,10 +6,10 @@ class Lap < ApplicationRecord
 	validates :hardware, inclusion: { in: [ true, false ] }
 	validates :notes, length: {minimum: 5, maximum: 280}, allow_blank: true
 
-	belongs_to :user, dependent: :destroy
-	belongs_to :simulator, dependent: :destroy
-	belongs_to :track, dependent: :destroy
-	belongs_to :car, dependent: :destroy
+	belongs_to :user 
+	belongs_to :simulator 
+	belongs_to :track 
+	belongs_to :car 
 
 	# virtual attributes to parse user's input
 	def t_minutes

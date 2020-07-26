@@ -1,6 +1,6 @@
 <%= render 'shared/errors', obj: @lap %>
 
-<%= form_for @lap do |f| %>
+<%= form_for @lap || @lap = Lap.where(:user_id => current_user.id).last do |f| %>
 	<p>
 		<%= f.collection_select(:simulator_id, Simulator.all, :id, :name) %> 
 	</p>
