@@ -1,4 +1,4 @@
 
 3.times do |i|
-	Simulator.create(name: "Sim N#{i}", user_id: 24)
+	Simulator.create(name: "Sim N 0#{i}", user_id: 1)
 end
