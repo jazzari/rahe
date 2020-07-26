@@ -15,8 +15,10 @@ class LapsController < ApplicationController
 	end
 
 	def new
+		@laps = Lap.where(:user_id => current_user.id)
 		if @laps.exists?
 			@lap = @laps.last
+			puts "minutes : #{@f_min}" 
 		else
 			@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
 		end

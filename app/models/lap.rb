@@ -39,6 +39,7 @@ class Lap < ApplicationRecord
 	
 	def formated_time(time)
 		@formated_time = ""
+		#@f_min = 0
 
 		# format minutes
 		f_min = time / 60000
@@ -47,6 +48,7 @@ class Lap < ApplicationRecord
 		else
 			@formated_time = f_min.to_s
 		end
+		@f_min = f_min
 
 		# format seconds
 		f_sec = (time - (f_min * 60000)) / 1000
@@ -55,6 +57,7 @@ class Lap < ApplicationRecord
 		else
 			@formated_time += ":" + "#{f_sec}"
 		end
+		@f_sec = f_sec
 
 		# format milliseconds
 		f_mil = (time - (f_min * 60000) - (f_sec * 1000))
@@ -65,8 +68,10 @@ class Lap < ApplicationRecord
 		else
 			@formated_time += "." + "#{f_mil}"
 		end
+		@f_mil = f_mil
 
-		@formated_time
+		return @formated_time, @f_min, @f_sec, @f_mil
+
 	end
 
 end

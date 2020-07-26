@@ -1,6 +1,6 @@
 <%= render 'shared/errors', obj: @lap %>
 
-<%= form_for @lap || @lap = Lap.where(:user_id => current_user.id).last do |f| %>
+<%= form_for @lap do |f| %>
 	<p>
 		<%= f.collection_select(:simulator_id, Simulator.all, :id, :name) %> 
 	</p>
@@ -11,18 +11,33 @@
 		<%= f.collection_select(:car_id, Car.all, :id, :name) %> 
 	</p>
 	<div class="row">
-	  <div class="column">
-		<%= f.label :minutes %>
-		<%= f.number_field :t_minutes, in: 0..59 %>
-	  </div>
-	  <div class="column">
-		<%= f.label :seconds %>
-		<%= f.number_field :t_seconds, in: 0..59 %>
-	  </div>
-	  <div class="column">
-		<%= f.label :milliseconds %>
-		<%= f.number_field :t_millis, in: 0..999 %>
-	  </div>
+	  <% if @lap.time.nil? %>	
+	  	  <div class="column">
+			<%= f.label :minutes %>
+			<%= f.number_field :t_minutes, in: 0..59 %>
+		  </div>
+		  <div class="column">
+			<%= f.label :seconds %>
+			<%= f.number_field :t_seconds, in: 0..59 %>
+		  </div>
+		  <div class="column">
+			<%= f.label :milliseconds %>
+			<%= f.number_field :t_millis, in: 0..999 %>
+		  </div>
+	  <% else %>
+		  <div class="column">
+			<%= f.label :minutes %>
+			<%= f.number_field :t_minutes, in: 0..59, :value => @lap.formated_time(@lap.time).second %>
+		  </div>
+		  <div class="column">
+			<%= f.label :seconds %>
+			<%= f.number_field :t_seconds, in: 0..59, :value => @lap.formated_time(@lap.time).third %>
+		  </div>
+		  <div class="column">
+			<%= f.label :milliseconds %>
+			<%= f.number_field :t_millis, in: 0..999, :value => @lap.formated_time(@lap.time).last %>
+		  </div>
+	  <% end %>
 	</div>	
 	<p>
 	    <b>Setting</b><br />
