@@ -1,11 +1,13 @@
 class LapsController < ApplicationController
 		before_action :set_lap, only: [:edit, :show, :update, :destroy]
 		before_action :authenticate_user!, except: [:index, :show]
-
+		before_action :last_lap, only: [:new]
 
 	def index
 		@laps = Lap.all.order(created_at: :DESC)
-
+		unless current_user.blank?
+			@laps = Lap.where(:user_id => current_user.id).order(created_at: :DESC)
+		end
 	end
 
 	def show
@@ -13,7 +15,7 @@ class LapsController < ApplicationController
 	end
 
 	def new
-		@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
+		
 	end
 
 	def create
@@ -63,6 +65,8 @@ class LapsController < ApplicationController
 		 :setting, :hardware, :notes, :time, :simulator_id, :track_id, :car_id)
 	end
 
-
+	def last_lap
+		@lap = Lap.where(:user_id => current_user.id).last
+	end
 
 end
