@@ -37,9 +37,9 @@ class Lap < ApplicationRecord
 	end
 
 	
+	# method to set format to user's views and form
 	def formated_time(time)
 		@formated_time = ""
-		#@f_min = 0
 
 		# format minutes
 		f_min = time / 60000
