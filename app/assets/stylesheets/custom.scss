@@ -1,0 +1,12 @@
+@import 'app/assets/stylesheets/bootstrap.css';
+
+.home-page {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  background-image: url('assettoCorsa.jpg');
+  background-color: rgba(255,255,255,0.2);
+  background-blend-mode:lighten;
+  height: 700px;
+
+}
