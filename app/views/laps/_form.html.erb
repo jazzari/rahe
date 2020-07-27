@@ -31,11 +31,9 @@
 
 	<p></p>
   <div class="form-group">
-  		<div class="input-group-prepend">
-	    	<label class="input-group-text" for="inputGroupSelect01">TimeLap</label>
-	    </div>
+  	<h4 class="text-center">TIMELAP</h4>
 	<div class="row">
-	  <div class="col-1">
+	  <div class="col-md-1 offset-md-4">
 		<%= f.label :minutes %>
 		<%= f.number_field :t_minutes, in: 0..59, class: "form-control" %>
 	  </div>
@@ -47,12 +45,13 @@
 		<%= f.label :milliseconds %>
 		<%= f.number_field :t_millis, in: 0..999, class: "form-control" %>
 	  </div>
-	  <div class="col"></div>
-	</div>	
-
+    </div>
   </div>
-	<p>
-	    <b>Setting</b><br />
+	<p></p>
+	<div class="form-group">
+	  <div class="row">
+	  	<div class="col">
+	    <h4>SETUP</h4>
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Settings', 'Custom' %></td>
@@ -64,7 +63,9 @@
 	            <td><%= f.radio_button :setting, false, checked: true %></td>
 	        </tr>
 	    </table>
-	</p>
+		</div>
+		<div class="col">
+		<h4>HARDWARE</h4>
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Hardware', 'Custom' %></td>
@@ -76,11 +77,20 @@
 	            <td><%= f.radio_button :hardware, false, checked: true %></td>
 	        </tr>
 	    </table>
-	<p>
-		<%= f.label :notes %>
-		<%= f.text_area :notes, placeholder: "Enter your notes..." %>
-	</p>
-	<%= f.submit %>
+		</div>
+		<div class="col">
+		<h4>NOTES</h4>
+			<%= f.text_area :notes, placeholder: "Enter your notes..." %>
+		</div>
+	  </div>
+	</div>
+
+	<p></p>
+	<div class="row">
+	  <div class="col-lg-12">
+		<%= f.submit "Create Laptime", class: "btn ml-1 btn-outline-primary float-right" %>
+	  </div>
+	</div>
 <% end %>
 <p></p>
 <%= link_to 'Back', laps_path %>
