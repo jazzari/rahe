@@ -2,53 +2,47 @@
 <div class="container form-page">
 
 <div class="row">
-  <div class="col-sm-10 offset-md-2">
+  <div class="col-sm-10 offset-md-3">
 
-<div class="card border-primary bg-light mb-3" style="max-width: 75%;">
-  <div class="card-header text-center">NEW TIMELAP</div>
-  <div class="card-body">
+<div class="card border-primary bg-transparent mb-3" style="max-width: 50%;">
+
+  <div class="card-body text-primary">
 <form>
   <fieldset>
 <%= form_for @lap do |f| %>
 
   <div class="form-group">
 	<div class="row">
-  	  <div class="col">	
-	  	<div class="input-group-prepend">
-	    	<label class="input-group-text" for="inputGroupSelect01">Simulators</label>
-	    </div>
-			<%= f.collection_select(:simulator_id, Simulator.all, :id, :name, 
+  	  <div class="col-3">	
+		<label>Simulators</label>
+		<%= f.collection_select(:simulator_id, Simulator.all, :id, :name, 
 			  {class: 'form-control'}) %> 
 	  </div>
-  	  <div class="col">	
-	  	<div class="input-group-prepend">
-	    	<label class="input-group-text" for="inputGroupSelect01">Tracks</label>
-	    </div>
-			<%= f.collection_select(:track_id, Track.all, :id, :name, 
+  	  <div class="col-3">	
+		<label>Tracks</label>
+		<%= f.collection_select(:track_id, Track.all, :id, :name, 
 				{class: 'form-control'}) %> 
 	  </div>
-	  <div class="col">	
-	  	<div class="input-group-prepend">
-	    	<label class="input-group-text" for="inputGroupSelect01">Cars</label>
-	    </div>
-			<%= f.collection_select(:car_id, Car.all, :id, :name, {class: 'form-control '}) %> 
+	  <div class="col-3">	
+		<label>Cars</label>
+		<%= f.collection_select(:car_id, Car.all, :id, :name, {class: 'form-control '}) %> 
 	  </div>
   	</div>
   </div>
 
 	<p></p>
   <div class="form-group">
-  	<h5 class="text-center">TIMELAP</h5>
+  	<h5>TIME</h5>
 	<div class="row">
-	  <div class="col-md-2 offset-md-3">
+	  <div class="col-md-3">
 		<%= f.label :minutes %>
 		<%= f.number_field :t_minutes, in: 0..59, class: "form-control" %>
 	  </div>
-	  <div class="col-2">
+	  <div class="col-3">
 		<%= f.label :seconds %>
 		<%= f.number_field :t_seconds, in: 0..59, class: "form-control" %>
 	  </div>
-	  <div class="col-2">
+	  <div class="col-3">
 		<%= f.label :milliseconds %>
 		<%= f.number_field :t_millis, in: 0..999, class: "form-control" %>
 	  </div>
@@ -57,7 +51,7 @@
 	<p></p>
 	<div class="form-group">
 	  <div class="row">
-	  	<div class="col">
+	  	<div class="col-4">
 	    <h5>SETUP</h5>
 	    <table>
 	        <tr>
@@ -71,7 +65,7 @@
 	        </tr>
 	    </table>
 		</div>
-		<div class="col">
+		<div class="col-6">
 		<h5>HARDWARE</h5>
 	    <table>
 	        <tr>
@@ -85,7 +79,9 @@
 	        </tr>
 	    </table>
 		</div>
-		<div class="col">
+	  </div>
+	  <div class="row">
+	  	<div class="col">
 		<h5>NOTES</h5>
 			<%= f.text_area :notes, placeholder: "Enter your notes..." %>
 		</div>
@@ -95,12 +91,12 @@
 	<p></p>
 	<div class="row">
 	  <div class="col-lg-12">
-		<%= f.submit "Create Laptime", class: "btn ml-1 btn-outline-primary float-right" %>
+		<%= f.submit "Create Timelap", class: "btn ml-1 btn-primary float-right" %>
 	  </div>
 	</div>
 <% end %>
 <p></p>
-<%= link_to 'Back', laps_path %>
+<%= link_to 'Back', laps_path, class: "btn ml-1 btn-primary" %>
   </fieldset>
 </form>
 </div>
