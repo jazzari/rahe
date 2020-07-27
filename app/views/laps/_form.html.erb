@@ -1,5 +1,12 @@
 <%= render 'shared/errors', obj: @lap %>
-<div class="container">
+<div class="container form-page">
+
+<div class="row">
+  <div class="col-sm-10 offset-md-2">
+
+<div class="card border-primary bg-light mb-3" style="max-width: 75%;">
+  <div class="card-header text-center">NEW TIMELAP</div>
+  <div class="card-body">
 <form>
   <fieldset>
 <%= form_for @lap do |f| %>
@@ -31,17 +38,17 @@
 
 	<p></p>
   <div class="form-group">
-  	<h4 class="text-center">TIMELAP</h4>
+  	<h5 class="text-center">TIMELAP</h5>
 	<div class="row">
-	  <div class="col-md-1 offset-md-4">
+	  <div class="col-md-2 offset-md-3">
 		<%= f.label :minutes %>
 		<%= f.number_field :t_minutes, in: 0..59, class: "form-control" %>
 	  </div>
-	  <div class="col-1">
+	  <div class="col-2">
 		<%= f.label :seconds %>
 		<%= f.number_field :t_seconds, in: 0..59, class: "form-control" %>
 	  </div>
-	  <div class="col-1">
+	  <div class="col-2">
 		<%= f.label :milliseconds %>
 		<%= f.number_field :t_millis, in: 0..999, class: "form-control" %>
 	  </div>
@@ -51,7 +58,7 @@
 	<div class="form-group">
 	  <div class="row">
 	  	<div class="col">
-	    <h4>SETUP</h4>
+	    <h5>SETUP</h5>
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Settings', 'Custom' %></td>
@@ -65,7 +72,7 @@
 	    </table>
 		</div>
 		<div class="col">
-		<h4>HARDWARE</h4>
+		<h5>HARDWARE</h5>
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Hardware', 'Custom' %></td>
@@ -79,7 +86,7 @@
 	    </table>
 		</div>
 		<div class="col">
-		<h4>NOTES</h4>
+		<h5>NOTES</h5>
 			<%= f.text_area :notes, placeholder: "Enter your notes..." %>
 		</div>
 	  </div>
@@ -96,4 +103,11 @@
 <%= link_to 'Back', laps_path %>
   </fieldset>
 </form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
