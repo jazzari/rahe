@@ -1,14 +1,16 @@
 @import 'app/assets/stylesheets/bootstrap.css';
 
+
+/* Home Page */
 .home-page {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
-  background-image: url('assettoCorsa.jpg');
-  background-color: rgba(255,255,255,0.2);
+  background-image: url('02.png');
+  background-color: rgba(255,255,255,0.1);
   background-blend-mode:lighten;
-  height: 700px;
-
+  height: 600px;
+  width: 70%;
 }
 
 /* Lap's form page */
@@ -17,10 +19,24 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
-  background-image: url('assettoCorsa.jpg');
+  background-image: url('11.png');
   background-color: rgba(255,255,255,0.1);
   background-blend-mode:lighten;
   height: 600px;
   width: 70%;
 }
 
+/* Index and feed pages */
+.index-page {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  background-image: url('ss205945.jpg');
+  background-color: rgba(255,255,255,0.1);
+  background-blend-mode:lighten;
+  height: 600px;
+  width: 70%;
+}
+.index-card {
+	height: 100px;
+}

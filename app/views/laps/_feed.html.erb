@@ -1,19 +1,23 @@
 
 <% @laps.each do |lap| %>
-	<span>Simulator: <%= lap.simulator.name %></span>
-	<span>Track: <%= lap.track.name %></span>
-	<span>Car: <%= lap.car.name %></span>
-	<span>LapTime: <%= lap.formated_time(lap.time) %></span>
-	<span>Settings: <%= lap.setting %></span>
-	<span>Hardware: <%= lap.hardware %></span>
-	<span>Notes: <%= lap.notes %></span>
+	<div class="card bg-transparent">
+	  <div class="card-body lead text-warning index-card">
+		<span>Simulator: <%= lap.simulator.name %></span>
+		<span>Track: <%= lap.track.name %></span>
+		<span>Car: <%= lap.car.name %></span>
+		<span>LapTime: <%= lap.formated_time(lap.time) %></span>
+		<span>Settings: <%= lap.setting %></span>
+		<span>Hardware: <%= lap.hardware %></span>
+		<span>Notes: <%= lap.notes %></span>
 
-	<p>
-		<%= link_to 'Edit', edit_lap_path(lap) %>
-		<%= link_to 'Show', lap_path(lap) %>
-		<%= link_to 'Delete', lap_path(lap), method: :delete, 
-			data: { confirm: "Are you sure?" } %>
-	</p>
-	<br />
-	<p></p>
+		<p>
+			<%= link_to 'Edit', edit_lap_path(lap),  class: "btn btn-sm btn-primary" %>
+			<%= link_to 'Show', lap_path(lap),  class: "btn btn-sm btn-primary" %>
+			<%= link_to 'Delete', lap_path(lap), method: :delete, 
+				data: { confirm: "Are you sure?" },  class: "btn btn-sm btn-primary" %>
+		</p>
+		<br />
+		<p></p>
+	  </div>
+	</div>
 <% end %>
