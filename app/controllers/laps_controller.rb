@@ -4,7 +4,7 @@ class LapsController < ApplicationController
 
 
 	def index
-		@laps = Lap.all.order(created_at: :DESC)
+		#@laps = Lap.all.order(created_at: :DESC)
 		unless current_user.blank?
 			@laps = Lap.where(:user_id => current_user.id).order(created_at: :DESC)
 		end

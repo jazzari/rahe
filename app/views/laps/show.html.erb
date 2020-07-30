@@ -9,7 +9,7 @@
 		<span>Simulator: <%= @lap.simulator.name %></span>
 		<span>Track: <%= @lap.track.name %></span>
 		<span>Car: <%= @lap.car.name %></span>
-		<span>LapTime: <%= @lap.formated_time(@lap.time) %></span>
+		<span>LapTime: <%= @lap.formated_time(@lap.time).first %></span>
 		<% if @lap.setting == "true" %>
 			<span>Setting: default</span>
 		<% else %>
