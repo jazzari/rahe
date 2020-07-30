@@ -1,10 +1,43 @@
-<%= render 'shared/page_title', title: "Virtual Race Heroes" %>
 
-<h2>Welcome to Virtual Race Heroes</h2>
-<p>Create a new LapTime:</p>
-<%= link_to 'Add LapTime', new_lap_path %>
-<p>See all LapTimes:</p>
-<%= link_to 'LapTime List', laps_path %>
-<p>Or Log Out:</p>
-<p></p>
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<div class="container home-page">
+  <div class="row">
+  	<div class="col-11 offset-1">
+	  <div class="card border-dark bg-transparent mb-3 mt-3" style="max-width: 90%; height: 400px;">
+	  	<div class="card-body">
+		<h2 class="text-center">Welcome to Virtual Race Heroes</h2>
+		<p><hr></p>
+		<p>
+		  <h6 class="text-center">
+			With this App you should be able to track your progress and became 
+			a real Race Hero!
+		  </h6>
+		</p>
+
+		<div class="row">
+			<p></p>
+		</div>
+		<div class="row">
+			<p></p>
+		</div>
+		<div class="row">
+			<p></p>
+		</div>
+
+		<div class="row">
+			<div class="col offset-2">
+			<p>Create a new LapTime:</p>
+			<%= link_to 'Add LapTime', new_lap_path, class: "btn btn-lg btn-primary" %>
+			</div>
+			<div class="col">
+			<p>See all LapTimes:</p>
+			<%= link_to 'LapTime List', laps_path, class: "btn btn-lg btn-primary" %>
+			</div>
+		</div>
+
+		</div>
+	  </div>
+	</div>
+
+  </div>
+
+</div>

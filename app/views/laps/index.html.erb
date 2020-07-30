@@ -1,11 +1,19 @@
-<%= render 'shared/page_title', title: "timeLaps Index" %>
-<p><%= link_to 'Home', root_path %></p>
-<p></p>
-<p><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></p>
-<p></p>
-<p>
-	<%= link_to 'Add New Timelap', new_lap_path %>
-</p>
-<br />
 
-<%= render 'feed' %>
+<div class="container index-page">
+<div class="row">
+  <div class="col-12">
+
+  	<div class="card border-warning bg-transparent mb-3 mt-3" style="max-width: 100%;">
+
+  	  <div class="card-body text-primary">
+  	  	<h3 class="card-title text-center">TimeLaps Index</h3>
+  	  	<div class="card-body">
+			<%= render 'feed' %>
+		</div>
+	  </div>
+
+	</div>
+
+  </div>
+</div>
+</div>

@@ -23,7 +23,6 @@ class LapsController < ApplicationController
 			# when user have no previous Laps created
 			@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
 		end
-
 	end
 
 	def create
