@@ -16,7 +16,7 @@ class LapsController < ApplicationController
 
 	def new
 		@laps = Lap.where(:user_id => current_user.id)
-		
+
 		if @laps.exists?
 			# last Lap params used to fill new's form
 			@lap = @laps.last.dup
@@ -37,7 +37,7 @@ class LapsController < ApplicationController
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"
-			redirect_to lap_path(@lap)
+			redirect_to laps_path
 		else
 			render :new
 		end
