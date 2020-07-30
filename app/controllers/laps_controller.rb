@@ -16,10 +16,11 @@ class LapsController < ApplicationController
 
 	def new
 		@laps = Lap.where(:user_id => current_user.id)
+		
 		if @laps.exists?
 			# last Lap params used to fill new's form
 			@lap = @laps.last.dup
-		else
+			else
 			# when user have no previous Laps created
 			@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
 		end
@@ -31,6 +32,8 @@ class LapsController < ApplicationController
 		@lap.simulator_id = params[:lap][:simulator_id]
 		@lap.track_id = params[:lap][:track_id]
 		@lap.car_id = params[:lap][:car_id]
+		puts @lap.time
+		puts @lap.simulator_id
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"

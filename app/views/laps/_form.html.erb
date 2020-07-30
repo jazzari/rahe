@@ -1,10 +1,6 @@
 <%= render 'shared/errors', obj: @lap %>
 
-<div class="container form-page">
-<div class="row">
-  <div class="col-sm-10 offset-md-3">
-	<div class="card border-danger bg-transparent mb-3 mt-3" style="max-width: 65%;">
-      <div class="card-body text-light">
+
 
 <%= form_for @lap do |f| %>
   <div class="form-group">
@@ -32,86 +28,62 @@
   	<h5>TIME</h5>
 	<div class="row">
 
-	  <% if @lap.time.nil? %>	
-	  	  <div class="col-md-3">
+	  	  <% if @lap.time.nil? %>	
+	  	  <div class="column">
 			<%= f.label :minutes %>
 			<%= f.number_field :t_minutes, in: 0..59 %>
 		  </div>
-		  <div class="col-3">
+		  <div class="column">
 			<%= f.label :seconds %>
 			<%= f.number_field :t_seconds, in: 0..59 %>
 		  </div>
-		  <div class="col-3">
+		  <div class="column">
 			<%= f.label :milliseconds %>
 			<%= f.number_field :t_millis, in: 0..999 %>
 		  </div>
 	  <% else %>
-		  <div class="col-3">
+		  <div class="column">
 			<%= f.label :minutes %>
 			<%= f.number_field :t_minutes, in: 0..59, :value => @lap.formated_time(@lap.time).second %>
 		  </div>
-		  <div class="col-3">
+		  <div class="column">
 			<%= f.label :seconds %>
 			<%= f.number_field :t_seconds, in: 0..59, :value => @lap.formated_time(@lap.time).third %>
 		  </div>
-		  <div class="col-3">
+		  <div class="column">
 			<%= f.label :milliseconds %>
 			<%= f.number_field :t_millis, in: 0..999, :value => @lap.formated_time(@lap.time).last %>
 		  </div>
 	  <% end %>
 	</div>	
 	<p>
-	    <b>SETUP</b><br />
+	    <b>Setting</b><br />
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Settings', 'Custom' %></td>
 	            <td><%= f.radio_button :setting, true %></td>
 	        </tr>
-
 	        <tr>
 	            <td><%= f.label 'Settings', 'Default' %></td>
 	            <td><%= f.radio_button :setting, false, checked: true %></td>
 	        </tr>
 	    </table>
-		</div>
-		<div class="col-6">
-		<h5>HARDWARE</h5>
+	</p>
 	    <table>
 	        <tr>
 	            <td><%= f.label 'Hardware', 'Custom' %></td>
 	            <td><%= f.radio_button :hardware, true %></td>
 	        </tr>
-
 	        <tr>
 	            <td><%= f.label 'Hardware', 'Default' %></td>
 	            <td><%= f.radio_button :hardware, false, checked: true %></td>
 	        </tr>
 	    </table>
-		</div>
-	  </div>
-	  <div class="row">
-	  	<div class="col">
-		<h5>NOTES</h5>
-			<%= f.text_area :notes, placeholder: "Enter your notes..." %>
-		</div>
-	  </div>
-	</div>
-
-	<p></p>
-	<div class="row">
-	  <div class="col-lg-12">
-		<%= f.submit "Create Timelap", class: "btn ml-1 btn-primary float-right" %>
-	  </div>
-	</div>
+	<p>
+		<%= f.label :notes %>
+		<%= f.text_area :notes, placeholder: "Enter your notes..." %>
+	</p>
+	<%= f.submit %>
 <% end %>
 <p></p>
-<%= link_to 'Back', laps_path, class: "btn ml-1 btn-primary" %>
-
-
-       </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
+<%= link_to 'Back', laps_path %>
