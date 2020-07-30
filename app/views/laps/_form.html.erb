@@ -1,89 +1,130 @@
 <%= render 'shared/errors', obj: @lap %>
 
+<div class="container form-page">
+  <div class="row">
+   <div class="col-sm-10 offset-md-3">
 
+    <div class="card border-primary bg-transparent mb-3" style="max-width: 65%;">
 
-<%= form_for @lap do |f| %>
-  <div class="form-group">
-	<div class="row">
-  	  <div class="col-3">	
-		<label>Simulators</label>
-		<%= f.collection_select(:simulator_id, Simulator.all, :id, :name, 
-			  {class: 'form-control'}) %> 
-	  </div>
-  	  <div class="col-3">	
-		<label>Tracks</label>
-		<%= f.collection_select(:track_id, Track.all, :id, :name, 
-				{class: 'form-control'}) %> 
-	  </div>
-	  <div class="col-2">	
-		<label>Cars</label>
-		<%= f.collection_select(:car_id, Car.all, :id, :name, 
-			{class: 'form-control '}) %> 
-	  </div>
-  	</div>
+      <div class="card-body text-light">
+      	<h3 class="card-title text-center">New TimeLap</h3>
+
+		<%= form_for @lap do |f| %>
+		  <div class="form-group">
+			<div class="row">
+		  	  <div class="col-3">	
+				<label>Simulators</label>
+				<%= f.collection_select(:simulator_id, Simulator.all, :id, :name, 
+					  {class: 'form-control'}) %> 
+			  </div>
+		  	  <div class="col-3">	
+				<label>Tracks</label>
+				<%= f.collection_select(:track_id, Track.all, :id, :name, 
+						{class: 'form-control'}) %> 
+			  </div>
+			  <div class="col-2">	
+				<label>Cars</label>
+				<%= f.collection_select(:car_id, Car.all, :id, :name, 
+					{class: 'form-control '}) %> 
+			  </div>
+		  	</div>
+		  </div>
+
+			<p><hr></p>
+		  <div class="form-group">
+		  	<h5>TIME</h5>
+			<div class="row">
+
+			  	  <% if @lap.time.nil? %>	
+			  	  <div class="col-md-3">
+					<%= f.label :minutes %>
+					<%= f.number_field :t_minutes, in: 0..59, class: "form-control" %>
+				  </div>
+				  <div class="col-md-3">
+					<%= f.label :seconds %>
+					<%= f.number_field :t_seconds, in: 0..59, class: "form-control" %>
+				  </div>
+				  <div class="col-md-3">
+					<%= f.label :milliseconds %>
+					<%= f.number_field :t_millis, in: 0..999, class: "form-control" %>
+				  </div>
+
+			  <% else %>
+				  <div class="col-md-3">
+					<%= f.label :minutes %>
+					<%= f.number_field :t_minutes, in: 0..59, 
+						:value => @lap.formated_time(@lap.time).second, class: "form-control" %>
+				  </div>
+				  <div class="col-md-3">
+					<%= f.label :seconds %>
+					<%= f.number_field :t_seconds, in: 0..59, 
+						:value => @lap.formated_time(@lap.time).third, class: "form-control" %>
+				  </div>
+				  <div class="col-md-3">
+					<%= f.label :milliseconds %>
+					<%= f.number_field :t_millis, in: 0..999, 
+						:value => @lap.formated_time(@lap.time).last, class: "form-control" %>
+				  </div>
+
+			  <% end %>
+			  </div>	
+			</div>
+			<p><hr></p>
+			<div class="form-group">
+			  <div class="row">
+			  	<div class="col">
+			     <h5>SETUP</h5>
+			    <table>
+			        <tr>
+			            <td><%= f.label 'Settings', 'Custom' %></td>
+			            <td><%= f.radio_button :setting, true %></td>
+			        </tr>
+			        <tr>
+			            <td><%= f.label 'Settings', 'Default' %></td>
+			            <td><%= f.radio_button :setting, false, checked: true %></td>
+			        </tr>
+			    </table>
+				</div>
+
+				<div class="col">
+				<h5>HARDWARE</h5>
+			    <table>
+			        <tr>
+			            <td><%= f.label 'Hardware', 'Custom' %></td>
+			            <td><%= f.radio_button :hardware, true %></td>
+			        </tr>
+			        <tr>
+			            <td><%= f.label 'Hardware', 'Default' %></td>
+			            <td><%= f.radio_button :hardware, false, checked: true %></td>
+			        </tr>
+			    </table>
+			  </div>
+			</div>
+
+			<p><hr></p>
+			<div class="form-group">
+			  <div class="row">
+			  	<div class="col">
+			  	<h5>NOTES</h5>
+				<%= f.text_area :notes, placeholder: "Enter your notes...", class: "form-control" %>
+				</div>
+			  </div>
+			</div>
+
+			<div class="form-group">
+			  <div class="row">
+			  	<div class="col">
+					<%= f.submit class: "btn ml-1 btn-primary float-right" %>
+				</div>
+			  </div>
+			</div>
+		<% end %>
+		<p></p>
+		<%= link_to 'Back', laps_path, class: "btn ml-1 btn-primary" %>
+     </div>
+   </div>
+
   </div>
+ </div>
 
-	<p></p>
-  <div class="form-group">
-  	<h5>TIME</h5>
-	<div class="row">
-
-	  	  <% if @lap.time.nil? %>	
-	  	  <div class="column">
-			<%= f.label :minutes %>
-			<%= f.number_field :t_minutes, in: 0..59 %>
-		  </div>
-		  <div class="column">
-			<%= f.label :seconds %>
-			<%= f.number_field :t_seconds, in: 0..59 %>
-		  </div>
-		  <div class="column">
-			<%= f.label :milliseconds %>
-			<%= f.number_field :t_millis, in: 0..999 %>
-		  </div>
-	  <% else %>
-		  <div class="column">
-			<%= f.label :minutes %>
-			<%= f.number_field :t_minutes, in: 0..59, :value => @lap.formated_time(@lap.time).second %>
-		  </div>
-		  <div class="column">
-			<%= f.label :seconds %>
-			<%= f.number_field :t_seconds, in: 0..59, :value => @lap.formated_time(@lap.time).third %>
-		  </div>
-		  <div class="column">
-			<%= f.label :milliseconds %>
-			<%= f.number_field :t_millis, in: 0..999, :value => @lap.formated_time(@lap.time).last %>
-		  </div>
-	  <% end %>
-	</div>	
-	<p>
-	    <b>Setting</b><br />
-	    <table>
-	        <tr>
-	            <td><%= f.label 'Settings', 'Custom' %></td>
-	            <td><%= f.radio_button :setting, true %></td>
-	        </tr>
-	        <tr>
-	            <td><%= f.label 'Settings', 'Default' %></td>
-	            <td><%= f.radio_button :setting, false, checked: true %></td>
-	        </tr>
-	    </table>
-	</p>
-	    <table>
-	        <tr>
-	            <td><%= f.label 'Hardware', 'Custom' %></td>
-	            <td><%= f.radio_button :hardware, true %></td>
-	        </tr>
-	        <tr>
-	            <td><%= f.label 'Hardware', 'Default' %></td>
-	            <td><%= f.radio_button :hardware, false, checked: true %></td>
-	        </tr>
-	    </table>
-	<p>
-		<%= f.label :notes %>
-		<%= f.text_area :notes, placeholder: "Enter your notes..." %>
-	</p>
-	<%= f.submit %>
-<% end %>
-<p></p>
-<%= link_to 'Back', laps_path %>
+</div>
