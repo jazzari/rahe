@@ -5,7 +5,8 @@ ActiveAdmin.register Track do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :simulator_id
+  belongs_to :simulator, optional: true
+  permit_params :name, :simulator_id
   #
   # or
   #
@@ -14,5 +15,13 @@ ActiveAdmin.register Track do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  controller do 
+    def create
+      @track = Track.create(permitted_params[:track])
+      redirect_to admin_tracks_path
+    end
+
+
+  end
+
 end

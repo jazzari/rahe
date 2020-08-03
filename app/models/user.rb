@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :simulators, dependent: :destroy
-  has_many :tracks, :through => :simulators
-  has_many :cars, :through => :tracks
-  has_many :laps, :through => :cars
+
+  has_many :laps, dependent: :destroy
 end

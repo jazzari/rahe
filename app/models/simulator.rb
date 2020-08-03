@@ -1,9 +1,10 @@
 class Simulator < ApplicationRecord
 
-	validates :name, presence: true
+	validates :name, uniqueness: true, presence: true
 
-	belongs_to :user
 	has_many :tracks, dependent: :destroy
 	has_many :cars, :through=> :tracks
 	has_many :laps, :through=> :cars
+
+	accepts_nested_attributes_for :tracks, allow_destroy: true
 end
