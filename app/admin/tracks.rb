@@ -43,12 +43,12 @@ ActiveAdmin.register Track do
 
     form do |f|
     
-      ### Declare here the model's own form fields:
+      # Model's own fields:
       f.inputs "Details" do
         f.input :name, label: "Track Name"
       end
       
-      ### Declare here the form for the child model, using the "has_many" method:
+      # Child model fields, using the "has_many" method:
       f.inputs "Cars" do
         f.has_many :cars, heading: false, allow_destroy: true do |o|
           o.input :name, label: "Car Name"

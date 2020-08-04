@@ -29,12 +29,12 @@ ActiveAdmin.register Simulator do
 
   form do |f|
     
-    ### Declare here the model's own form fields:
+    # Model's own fields:
     f.inputs "Details" do
       f.input :name, label: "Simulator Name"
     end
     
-    ### Declare here the form for the child model, using the "has_many" method:
+    # Child model fields, using the "has_many" method:
     f.inputs "Tracks" do
       f.has_many :tracks, heading: false, allow_destroy: true do |o|
         o.input :name, label: "Track Name"

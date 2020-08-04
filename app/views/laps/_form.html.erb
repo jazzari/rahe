@@ -14,18 +14,18 @@
 			<div class="row">
 		  	  <div class="col-3">	
 				<label>Simulators</label>
-				<%= f.collection_select(:simulator_id, Simulator.all, :id, :name, 
-					  {class: 'form-control'}) %> 
+				<%= f.collection_select(:simulator_id, Simulator.order(:name), 
+					:id, :name, {class: 'form-control'}) %> 
 			  </div>
 		  	  <div class="col-3">	
 				<label>Tracks</label>
-				<%= f.collection_select(:track_id, Track.all, :id, :name, 
-						{class: 'form-control'}) %> 
+				<%= f.grouped_collection_select(:track_id, Simulator.order(:name),
+				  :tracks, :name, :id, :name, {class: 'form-control'}) %> 
 			  </div>
 			  <div class="col-2">	
 				<label>Cars</label>
-				<%= f.collection_select(:car_id, Car.all, :id, :name, 
-					{class: 'form-control '}) %> 
+				<%= f.grouped_collection_select(:car_id, Track.order(:name), :cars, :name,
+				 :id, :name, {class: 'form-control '}) %> 
 			  </div>
 		  	</div>
 		  </div>

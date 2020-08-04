@@ -15,6 +15,7 @@ class LapsController < ApplicationController
 	end
 
 	def new
+ 
 		@laps = Lap.where(:user_id => current_user.id)
 
 		if @laps.exists?
@@ -22,12 +23,12 @@ class LapsController < ApplicationController
 			@lap = @laps.last.dup
 			else
 			# when user have no previous Laps created
-			@lap = current_user.simulators.build.tracks.build.cars.build.laps.build
+			@lap = current_user.laps.build
 		end
 	end
 
 	def create
-		@lap = current_user.simulators.build.tracks.build.cars.build.laps.build(lap_params)
+		@lap = current_user.laps.build(lap_params)
 		@lap.user_id = current_user.id
 		@lap.simulator_id = params[:lap][:simulator_id]
 		@lap.track_id = params[:lap][:track_id]
