@@ -1,4 +1,6 @@
+
 <%= render 'shared/errors', obj: @lap %>
+
 
 <div class="container form-page">
   <div class="row">
@@ -7,7 +9,7 @@
     <div class="card border-primary bg-transparent mb-3" style="max-width: 65%;">
 
       <div class="card-body text-light">
-      	<h3 class="card-title text-center">New TimeLap</h3>
+      	<h3 class="card-title text-center">TimeLap</h3>
 
 		<%= form_for @lap do |f| %>
 		  <div class="form-group">
@@ -15,12 +17,12 @@
 		  	  <div class="col-3">	
 				<label>Simulators</label>
 				<%= f.collection_select(:simulator_id, Simulator.order(:name), 
-					:id, :name, {class: 'form-control'}) %> 
+					:id, :name, {:include_blank => ""}, {class: 'form-control'}) %> 
 			  </div>
 		  	  <div class="col-3">	
 				<label>Tracks</label>
 				<%= f.grouped_collection_select(:track_id, Simulator.order(:name),
-				  :tracks, :name, :id, :name, {class: 'form-control'}) %> 
+				  :tracks, :name, :id, :name, {:include_blank => "Select"}, {class: 'form-control'}) %> 
 			  </div>
 			  <div class="col-2">	
 				<label>Cars</label>

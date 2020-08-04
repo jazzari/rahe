@@ -15,7 +15,6 @@ class LapsController < ApplicationController
 	end
 
 	def new
- 
 		@laps = Lap.where(:user_id => current_user.id)
 
 		if @laps.exists?
