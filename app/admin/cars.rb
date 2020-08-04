@@ -5,7 +5,8 @@ ActiveAdmin.register Car do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :track_id
+  belongs_to :track, optional: true
+  permit_params :name, :track_id
   #
   # or
   #
@@ -14,5 +15,17 @@ ActiveAdmin.register Car do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  menu false
   
+  controller do 
+    def find_track
+
+    end
+
+    def create
+      @car = Car.create(permitted_params[:car])
+      redirect_to admin_track_cars_path
+    end
+  end
+
 end

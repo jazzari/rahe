@@ -20,7 +20,7 @@ ActiveAdmin.register Simulator do
       link_to simulator.name, admin_simulator_path(simulator)
     end
    
-    column "Track Name", :tracks_of_simulator do |simulator|
+    column "Number of Tracks", :tracks_of_simulator do |simulator|
       link_to simulator.tracks.count, admin_simulator_tracks_path(simulator)
     end
    
@@ -43,7 +43,11 @@ ActiveAdmin.register Simulator do
     end
     f.actions
   end
-
-
+ 
+  controller do
+    def show
+      redirect_to admin_simulator_tracks_path(resource)
+    end
+  end
 
 end

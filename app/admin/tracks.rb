@@ -6,7 +6,7 @@ ActiveAdmin.register Track do
   # Uncomment all parameters which should be permitted for assignment
   #
   belongs_to :simulator, optional: true
-  permit_params :name, :simulator_id
+  permit_params :name, :simulator_id, cars_attributes: [:id, :_destroy, :name]
   #
   # or
   #
@@ -15,13 +15,47 @@ ActiveAdmin.register Track do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+   index do
+      selectable_column
+
+      column "Track Name", :name do |track|
+        link_to track.name, admin_track_path(track)
+      end
+   
+      column "Number of Cars", :cars_of_track do |track|
+        link_to track.cars.count, admin_track_cars_path(track)
+      end
+   
+    actions
+  end
+
   controller do 
+
+    def show
+      redirect_to admin_track_cars_path(resource)
+    end
+
     def create
       @track = Track.create(permitted_params[:track])
       redirect_to admin_tracks_path
     end
-
-
   end
+
+    form do |f|
+    
+      ### Declare here the model's own form fields:
+      f.inputs "Details" do
+        f.input :name, label: "Track Name"
+      end
+      
+      ### Declare here the form for the child model, using the "has_many" method:
+      f.inputs "Cars" do
+        f.has_many :cars, heading: false, allow_destroy: true do |o|
+          o.input :name, label: "Car Name"
+
+       end
+      end
+      f.actions
+    end
 
 end

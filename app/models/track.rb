@@ -6,5 +6,6 @@ class Track < ApplicationRecord
   has_many :cars, dependent: :destroy
   has_many :laps, :through=> :cars
 
+  accepts_nested_attributes_for :cars, allow_destroy: true
 
 end
