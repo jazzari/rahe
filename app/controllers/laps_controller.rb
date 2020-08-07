@@ -20,11 +20,15 @@ class LapsController < ApplicationController
 		if @laps.exists?
 			# last Lap params used to fill new's form
 			@lap = @laps.last.dup
-			@sim = @lap.simulator_id
-			puts "lap simulator_id: #{@sim}"
+			# gon variables to pass values to jquery select options
+			gon.sim = @lap.simulator.name
+			gon.track = @lap.track.name
+			gon.car = @lap.car.name
+
 			else
 			# when user have no previous Laps created
 			@lap = current_user.laps.build
+			gon.sim = {}
 
 		end
 	end
@@ -35,8 +39,6 @@ class LapsController < ApplicationController
 		@lap.simulator_id = params[:lap][:simulator_id]
 		@lap.track_id = params[:lap][:track_id]
 		@lap.car_id = params[:lap][:car_id]
-		puts @lap.time
-		puts @lap.simulator_id
 
 		if @lap.save
 			flash[:notice] = "TimeLap was successfully created"
@@ -47,6 +49,10 @@ class LapsController < ApplicationController
 	end
 
 	def edit 
+		# gon variables to pass to jquery in edit view
+		gon.sim = @lap.simulator.name
+		gon.track = @lap.track.name
+		gon.car = @lap.car.name
 	end
 
 	def update

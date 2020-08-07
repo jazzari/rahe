@@ -31,8 +31,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # warnings form Github
 gem "rack", ">= 2.2.3"
 
+# Admin and user authentication
 gem 'devise'
 gem 'activeadmin'
+
+# rails variables in javascript 
+gem 'gon', '~> 6.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
