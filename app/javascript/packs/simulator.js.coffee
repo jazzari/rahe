@@ -1,7 +1,8 @@
 
 jQuery ->
 
-  
+  emptyOption = $('<option />').attr('value', '')
+
   $('#lap_track_id').parent().hide()
 
   tracks = $('#lap_track_id').html()
@@ -10,8 +11,9 @@ jQuery ->
   $('#lap_simulator_id').change ->
     simulator = $('#lap_simulator_id :selected').text()
     $('#lap_track_id').show()
+
     
-    options = $(tracks).filter("optgroup[label='#{simulator}']").html()
+    options = $(tracks).filter("optgroup[label='#{simulator}']").prepend(emptyOption).html()
     console.log(options)
     if options
       $('#lap_track_id').html(options)
@@ -28,7 +30,7 @@ jQuery ->
   $('#lap_track_id').change ->
     track = $('#lap_track_id :selected').text()
     
-    options = $(cars).filter("optgroup[label='#{track}']").html()
+    options = $(cars).filter("optgroup[label='#{track}']").prepend(emptyOption).html()
     console.log(options)
     if options
       $('#lap_car_id').html(options)
