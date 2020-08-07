@@ -1,10 +1,15 @@
+
 jQuery ->
+
+  
   $('#lap_track_id').parent().hide()
+
   tracks = $('#lap_track_id').html()
   console.log(tracks)
 
   $('#lap_simulator_id').change ->
     simulator = $('#lap_simulator_id :selected').text()
+    $('#lap_track_id').show()
     
     options = $(tracks).filter("optgroup[label='#{simulator}']").html()
     console.log(options)
@@ -31,4 +36,5 @@ jQuery ->
     else
       $('#lap_car_id').empty()
       $('#lap_car_id').parent().hide()
+
 

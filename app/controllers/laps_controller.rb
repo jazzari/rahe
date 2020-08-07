@@ -20,9 +20,12 @@ class LapsController < ApplicationController
 		if @laps.exists?
 			# last Lap params used to fill new's form
 			@lap = @laps.last.dup
+			@sim = @lap.simulator_id
+			puts "lap simulator_id: #{@sim}"
 			else
 			# when user have no previous Laps created
 			@lap = current_user.laps.build
+
 		end
 	end
 
