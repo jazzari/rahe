@@ -332,4 +332,9 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   config.use_webpacker = true
+
+  ActiveAdmin::BaseController.class_eval do
+    skip_before_action :authenticate_user!
+  end
+
 end
