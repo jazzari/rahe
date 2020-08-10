@@ -15,6 +15,9 @@ ActiveAdmin.register Track do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+   actions :all, :except => :new
+
    index do
       selectable_column
 
@@ -30,19 +33,24 @@ ActiveAdmin.register Track do
   end
 
   controller do 
-
     def show
+      
       redirect_to admin_track_cars_path(resource)
     end
 
     def create
       @track = Track.create(permitted_params[:track])
-      redirect_to admin_tracks_path
+      if @track.save
+        redirect_to admin_tracks_path
+        flash[:notice] = "Track created!"
+      else
+        render :new
+      end
     end
   end
 
     form do |f|
-    
+      f.semantic_errors *f.object.errors.keys
       # Model's own fields:
       f.inputs "Details" do
         f.input :name, label: "Track Name"

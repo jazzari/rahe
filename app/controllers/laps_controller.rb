@@ -49,7 +49,7 @@ class LapsController < ApplicationController
 	end
 
 	def edit 
-		# gon variables to pass to jquery in edit view
+		# gon variables to pass to jquery in edit viewΩ
 		gon.sim = @lap.simulator.name
 		gon.track = @lap.track.name
 		gon.car = @lap.car.name
