@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, :assets, Rails.env)
 
-config.assets.precompile += %w( active_admin.css active_admin/print.css active_admin.js )
+config.assets.precompile += ['active_admin.css', 'active_admin/print.css', 'active_admin.js']
 
 module Rahe
   class Application < Rails::Application
