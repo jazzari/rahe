@@ -6,8 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, :assets, Rails.env)
 
-
-
 module Rahe
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
