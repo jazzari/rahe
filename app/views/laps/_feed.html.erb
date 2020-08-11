@@ -1,7 +1,7 @@
 
 <% @laps.each do |lap| %>
-	<div class="card bg-transparent">
-	  <div class="card-body lead text-warning index-card">
+	<div class="card bg-light pb-4">
+	  <div class="card-body lead text-primary index-card">
 		<span>Simulator: <%= lap.simulator.name %></span>
 		<span>Track: <%= lap.track.name %></span>
 		<span>Car: <%= lap.car.name %></span>
@@ -9,7 +9,7 @@
 		<span>Settings: <%= lap.setting %></span>
 		<span>Hardware: <%= lap.hardware %></span>
 		<span>Notes: <%= lap.notes %></span>
-
+		<p></p>
 		<p>
 			<%= link_to 'Edit', edit_lap_path(lap),  class: "btn btn-sm btn-primary" %>
 			<%= link_to 'Show', lap_path(lap),  class: "btn btn-sm btn-primary" %>

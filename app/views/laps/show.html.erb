@@ -2,8 +2,8 @@
 <div class="container show-page">
 <div class="row justify-content-center">
   <div class="col-sm-12 offset-md-2">
-  	<div class="card border-info bg-transparent mb-3 mt-3" style="max-width: 80%;">
-  	  <div class="card-body">
+  	<div class="card border-warning bg-transparent mb-3 mt-3" style="max-width: 80%;">
+  	  <div class="card-body text-primary">
   	  	<h3 class="card-title text-center">Showing TimeLap</h3>
   	  	<p><hr></p>
 		<span>Simulator: <%= @lap.simulator.name %></span>
@@ -22,15 +22,13 @@
 			<span>Hardware: custom</span>
 		<% end %>
 
-		<span>Notes: <%= @lap.notes %></span>
-
+		<p>Notes: <%= @lap.notes %></p>
 
 		<p></p>
-
-		<%= link_to 'Edit', edit_lap_path(@lap),  class: "btn ml-1 btn-info" %>
-		<%= link_to 'Back', laps_path, class: "btn ml-1 btn-info" %>
+		<%= link_to 'Edit', edit_lap_path(@lap),  class: "btn ml-1 btn-primary" %>
+		<%= link_to 'Back', laps_path, class: "btn ml-1 btn-primary" %>
 		<%= link_to 'Delete', lap_path(@lap), method: :delete, 
-			data: { confirm: "Are you sure?" }, class: "btn ml-1 btn-info" %>
+			data: { confirm: "Are you sure?" }, class: "btn ml-1 btn-primary" %>
 		</div>
 	  </div>
 	</div>
