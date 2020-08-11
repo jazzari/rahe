@@ -4,7 +4,9 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require(:default, :assets, Rails.env)
+
+config.assets.precompile += %w( active_admin.css active_admin/print.css active_admin.js )
 
 module Rahe
   class Application < Rails::Application
