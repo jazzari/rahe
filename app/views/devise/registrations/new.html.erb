@@ -1,9 +1,16 @@
-<%= render 'shared/page_title', title: "sign in" %>
+<%= render 'shared/page_title', title: "sign up" %>
 
 <div class="container">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  
+    <% if resource.errors.any? %>
+      <ul>
+         <% resource.errors.each do |error,msg| %>
+
+            <li> <%=error.capitalize%>  <%=msg%></li>
+         <% end %>
+      </ul>
+    <% end %>
 
   <div class="form-group">
     <div class="control-label col-md-2 offset-md-4">
@@ -44,7 +51,7 @@
 
   <div class="form-group">
     <div class="col-md-3 offset-md-4">
-      <%= f.submit "Sign in", class: "btn ml-1 btn-primary btn-lg btn-xlarge" %>
+      <%= f.submit "Sign up", class: "btn ml-1 btn-primary btn-lg btn-xlarge" %>
     </div>
   </div>
 <% end %>
