@@ -36,7 +36,7 @@ gem 'devise'
 gem 'activeadmin'
 
 # rails variables in javascript 
-gem 'gon', '~> 6.1'
+gem 'gon', '~> 6.4'
 
 
 group :development, :test do
